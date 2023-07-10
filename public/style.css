@@ -1,6 +1,21 @@
-.fw_600{
+html {
+    overflow: hidden;
+}
+
+.fw_600 {
     font-weight: 600;
 }
+
+.hide_sc::-webkit-scrollbar {
+    display: none;
+}
+
+.hide_sc {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
 /* 
 ================================================================
 ======================== Explore Page CSS ======================
@@ -35,6 +50,10 @@
     margin: 0;
 }
 
+.left_sidebar_nav_items li a svg {
+    font-size: 24px;
+}
+
 .left_sidebar_nav_items li a {
     color: black;
     font-size: 18px;
@@ -42,7 +61,9 @@
     border-radius: 12px;
     font-weight: 500;
     margin: 3px 0;
-    display: block;
+    display: flex;
+    gap: 11px;
+    align-items: center;
 }
 
 .left_sidebar_nav_items ul .active a {
@@ -125,7 +146,10 @@
     border-bottom: 0;
 }
 
-.explore_feed {}
+.explore_feed {
+    display: flex;
+    flex-direction: column;
+}
 
 .feed_header {
     padding: 16px 35px;
@@ -156,23 +180,67 @@
 }
 
 .feed_content {
-    margin-top: 25px;
     padding: 0 20px;
+    overflow-y: scroll;
+    padding-top: 25px;
+    padding-bottom: 100px;
+    height: 100vh;
 }
 
-.active_user {}
+.ac_box_shadow {
+    box-shadow: 4px 8px 9px -2px #bcbcbce6;
+    -webkit-box-shadow: 4px 8px 9px -2px #bcbcbce6;
+    -moz-box-shadow: 4px 8px 9px -2px #bcbcbce6;
+}
+
+.active_user {
+    background-color: #d4ffff;
+    border: 2px solid #bfeaea;
+}
+
+.normal_user {
+    background-color: #e5e5e5;
+    border: 2px solid #bfeaea75;
+}
 
 .f_user h5,
 .f_user p {
     margin: 0;
+}
+.su_footer{
+    display: flex;
+    justify-content:space-between
+}
+.tags {
+    display: flex;
+    margin-top: 10px;
+    gap: 20px;
+
+}
+
+.tags span {
+    border-radius: 10px;
+    color: black;
+    padding: 0px 15px;
+    border: 1px solid #d4ffff;
+    background: #c2efef;
+    font-size: 15px;
+    font-weight: 600;
+}
+.follow_back{
+    font-size: 16px;
+    font-weight: 700;
+    color: black;
+    background: #c5c8eb;
+}
+.with_tag .s_user_details h5 {
+    width: min-content;
 }
 
 .f_user {
     display: flex;
     align-items: center;
     margin: 0;
-    background-color: #d4ffff;
-    border: 2px solid #bfeaea; 
     flex-wrap: wrap;
     padding: 15px;
     border-radius: 8px;
@@ -187,7 +255,7 @@
     text-align-last: center;
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 15px;
 }
 
 .s_user_details {
@@ -205,28 +273,34 @@
 .s_credits {
     text-align-last: center;
 }
-.feed_content_nav{ 
+
+.feed_content_nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 12px 0;
 }
-.feed_content_nav span{
+
+.feed_content_nav span {
     font-size: 18px;
     font-weight: 600;
 }
-.fc_left{
+
+.fc_left {
     display: flex;
-    gap:20px;
+    gap: 20px;
     align-items: baseline;
 }
-.fc_left span{
+
+.fc_left span {
     color: gray;
 }
-.feed_content_nav .new_followers{
+
+.feed_content_nav .new_followers {
     color: black;
 }
-.feed_content_nav .new_followers .new{
+
+.feed_content_nav .new_followers .new {
     width: 25px;
     height: 25px;
     display: inline-block;
@@ -234,15 +308,38 @@
     position: relative;
     background-color: #848ef5;
 }
-.feed_content_nav .new_followers .new span{
+
+.feed_content_nav .new_followers .new span {
     position: absolute;
     top: 50%;
     font-size: 16px;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     color: white;
 
 }
-.right_sidebar {
-
+.su_right{
+    align-items: center;
+    gap: 10px;
+    display: flex;
 }
+.claimed{
+    color: gray;
+}
+.claimed span{
+    color: #848ef5;
+    font-weight: 600;
+} 
+.su_right .star svg{
+    color: #5ac4c4;
+}
+.su_right .view button{
+    border-radius: 10px;
+    color: black;
+    padding: 0px 15px;
+    border: 1px solid #d4ffff;
+    background: #c2efef;
+    font-size: 15px;
+    font-weight: 600;
+}
+.right_sidebar {}
