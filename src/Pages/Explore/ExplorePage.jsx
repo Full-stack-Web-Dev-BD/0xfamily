@@ -173,7 +173,10 @@ const ExplorePage = () => {
                       ))}
                     </div>
                     <div className="su_right">
-                      <span className="claimed"> Claimed Credits: <span>3/5</span> </span>
+                      <span className="claimed">
+                        
+                        Claimed Credits: <span>3/5</span>
+                      </span>
                       <span className="star">
                         <AiOutlineStar /> <AiOutlineStar />
                       </span>
@@ -187,7 +190,27 @@ const ExplorePage = () => {
             </div>
           </section>
         </div>
-        <div className="right_sidebar" />
+        <div className="right_sidebar">
+          <div className="search">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search in 0x. family  tweets"
+            />
+          </div>
+          <div className="filter">
+            <h3>Filer for user type</h3>
+            <p>
+              for <span>0x.family</span>
+            </p>
+            <div className="filter_item">
+              <div className="filter_item_innder">
+                <p className="m-0">45324</p>
+              </div>
+              <h5> NFT Collector</h5>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
