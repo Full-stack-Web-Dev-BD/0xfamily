@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import LeftSidebar from "../Components/LeftSidebar";
-import { AiOutlineStar } from "react-icons/ai";
+import Users from "../Components/Users";
+import Tweets from "../Components/Tweets";
+import Followers from "../Components/Followers";
+import UserFollowerRightSidebar from "../Components/UserFollowerRightSidebar";
+import {HiOutlineSwitchHorizontal} from 'react-icons/hi'
+import TweetRightSidebar from "../Components/TweetRightSidebar";
 
 const ExplorePage = () => {
   const tags = ["NFT Collector", "Design", "Artist"];
-
+  const [activeTab, setactiveTab] = useState(0);
   const users = [
     {
       "0x.family": "User1",
@@ -87,7 +92,81 @@ const ExplorePage = () => {
       tags: [tags[0]],
     },
   ];
+  const feedContentTab = [
+    { title: "Tweets", active: false },
+    { title: "Users", active: false },
+    { title: "New Followers", active: true, class: "" },
+  ];
+  const rightSidebarItem = [
+    {
+      title: "Filter for user type ",
+      for: "Bored Ape Yacht Club",
+      progress: [
+        {
+          class: "p_active",
+          amount: 32413,
+          title: "NFT Collectors",
+          value: 50,
+        },
+        { amount: 32413, title: "NFT Flippers", value: 65 },
+        { amount: 32413, title: "Builders", value: 60 },
+        { amount: 32413, title: "Artists", value: 50 },
+        { amount: 32413, title: "Degens", value: 30 },
+      ],
+    },
+    {
+      title: "Filter for followers count ",
+      for: "Bored Ape Yacht Club",
+      progress: [
+        {
+          amount: 32413,
+          title: "NFT Collectors",
+          value: 50,
+        },
+        { amount: 32413, title: "0-500", value: 65, class: "p_active" },
+        { amount: 32413, title: "500-5k", value: 60 },
+        { amount: 32413, title: "5k-50k", value: 50 },
+        { amount: 32413, title: "50k-500k", value: 30 },
+        { amount: 32413, title: "500k+", value: 30 },
+      ],
+    },
+    {
+      title: "Filter for Engagement rate ",
+      for: "Bored Ape Yacht Club",
+      progress: [
+        {
+          amount: 32413,
+          title: "NFT Collectors",
+          value: 50,
+        },
+        { amount: 32413, title: "0-10", value: 65, class: "p_active" },
+        { amount: 32413, title: "10-50", value: 60 },
+        { amount: 32413, title: "50-100", value: 50 },
+        { amount: 32413, title: "100-500", value: 30 },
+        { amount: 32413, title: "500+", value: 30 },
+      ],
+    },
+  ];
 
+  
+  const rightSidebarItemTweets = [
+    {
+      title: "Tranding Hashtags ",
+      for: "Bored Ape Yacht Club",
+      progress: [
+        {
+          class: "p_active",
+          amount: 32413,
+          title: "#airdrop",
+          value: 50,
+        },
+        { amount: 32413, title: "#web3", value: 65 },
+        { amount: 32413, title: "#NFT", value: 60 },
+        { amount: 32413, title: "#memeToken", value: 50 },
+        { amount: 32413, title: "#pepe", value: 30 },
+      ],
+    }, 
+  ];
   return (
     <div className="container-fluid">
       <div className="x_family_dashboard">
@@ -100,18 +179,18 @@ const ExplorePage = () => {
               </div>
               <div className="feed_sub_title">
                 <p>
-                  for <b>0x.family</b>
+                  for <b>Bored Ape Yacht Club</b>
                 </p>
               </div>
-              <button className="btn"> Switch</button>
+              <button className="btn"> <span><HiOutlineSwitchHorizontal/></span> Switch </button>
             </div>
             <div className="feed_content hide_sc">
               <div className="active_user f_user ac_box_shadow ">
                 <div className="s_img">
                   <img src="/images/user.png" alt="" />
                   <div className="s_user_details">
-                    <h5>0x.family (All User) </h5>
-                    <p>432433 Registered users </p>
+                    <h5>Bored Ape Yacht Club </h5>
+                    <p>432433 User / 432433 Holder </p>
                   </div>
                 </div>
                 <div className="s_following">
@@ -129,64 +208,52 @@ const ExplorePage = () => {
               </div>
               <div className="feed_content_nav">
                 <div className="fc_left">
-                  <span>Tweets</span>
-                  <span>Users</span>
-                  <span className="new_followers">
-                    New Followers
-                    <div className="new">
-                      <span>4</span>
-                    </div>
+                  {feedContentTab.map((tab, index) => (
+                    <>
+                      {tab.title == "New Followers" ? (
+                        <span
+                          onClick={(e) => setactiveTab(index)}
+                          className={`new_followers cp ${
+                            activeTab == index ? "active_tab" : ""
+                          } `}
+                        >
+                          New Followers
+                          <div className="new">
+                            <span>4</span>
+                          </div>
+                        </span>
+                      ) : (
+                        <span
+                          onClick={(e) => setactiveTab(index)}
+                          className={`cp ${
+                            activeTab == index ? "active_tab" : ""
+                          } `}
+                        >
+                          {tab.title}
+                        </span>
+                      )}
+                    </>
+                  ))}
+                </div>
+                {activeTab !== 0 ? (
+                  <span>
+                    Order by : <span className="fw_600">Credits</span>
                   </span>
-                </div>
-                <span>
-                  Order by : <span className="fw_600">Credits</span>
-                </span>
+                ) : (
+                  ""
+                )}
               </div>
-              {users.map((user, i) => (
-                <div className="with_tag mb-4" key={i}>
-                  <div className="normal_user  f_user ac_box_shadow ">
-                    <div className="s_img">
-                      <img src="/images/user.png" alt="" />
-                      <div className="s_user_details text-left">
-                        <h5> MannyETH </h5>
-                        <p>{"0x0342....304"} </p>
-                      </div>
-                    </div>
-                    <div className="s_following">
-                      <h5> {user.Following} </h5>
-                      <p>Following</p>
-                    </div>
-                    <div className="s_follower">
-                      <h5> {user.Follower} </h5>
-                      <p>Follower</p>
-                    </div>
-                    <div className="s_credits">
-                      <h5>{user.Credits}</h5>
-                      <p>Credits</p>
-                    </div>
-                    <button className="follow_back btn">Follow Back</button>
-                  </div>
-                  <div className="su_footer">
-                    <div className="tags">
-                      {user.tags.map((tag, i) => (
-                        <span> {tag} </span>
-                      ))}
-                    </div>
-                    <div className="su_right">
-                      <span className="claimed">
-                        
-                        Claimed Credits: <span>3/5</span>
-                      </span>
-                      <span className="star">
-                        <AiOutlineStar /> <AiOutlineStar />
-                      </span>
-                      <span className="view">
-                        <button className=" btn">View</button>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
+              <div className="users_tab_content">
+                {activeTab === 0 ? (
+                  <Tweets />
+                ) : activeTab === 1 ? (
+                  <Users keyword={true} users={users} />
+                ) : activeTab === 2 ? (
+                  <Followers users={users} />
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
           </section>
         </div>
@@ -198,18 +265,11 @@ const ExplorePage = () => {
               placeholder="Search in 0x. family  tweets"
             />
           </div>
-          <div className="filter">
-            <h3>Filer for user type</h3>
-            <p>
-              for <span>0x.family</span>
-            </p>
-            <div className="filter_item">
-              <div className="filter_item_innder">
-                <p className="m-0">45324</p>
-              </div>
-              <h5> NFT Collector</h5>
-            </div>
-          </div>
+          {activeTab == 0 ? (
+            <TweetRightSidebar rightSidebarItem={rightSidebarItemTweets} />
+          ) : (
+            <UserFollowerRightSidebar rightSidebarItem={rightSidebarItem} />
+          )}
         </div>
       </div>
     </div>

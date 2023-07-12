@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {AiOutlineSearch,AiOutlineUser,AiOutlineMail} from 'react-icons/ai'
-import {MdOutlineGroups3} from 'react-icons/md'
+import { AiOutlineSearch, AiOutlineUser, AiOutlineMail } from "react-icons/ai";
+import { MdOutlineGroups3 } from "react-icons/md";
 
 const LeftSidebar = () => {
+  const [activeSidebar, setActiveSidebar] = useState(0);
+  const [sideBarItems, setsideBarItems] = useState([
+    {
+      title: "Explore",
+      icon: <AiOutlineSearch />,
+    },
+    {
+      title: "Profile",
+      icon: <AiOutlineUser />,
+    },
+
+    {
+      title: "Notifications",
+      icon: <AiOutlineMail />,
+    },
+    {
+      title: "Communities",
+      icon: <MdOutlineGroups3 />,
+    },
+  ]);
   return (
     <div className="left_sidebar hide_sc">
       <div className="logo_header">
@@ -21,26 +41,13 @@ const LeftSidebar = () => {
       <div className="left_sidebar_nav">
         <div className="left_sidebar_nav_items">
           <ul>
-            <li className="active">
-              <Link to="/">
-                 <AiOutlineSearch/>  <span>Explore</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/">
-               <AiOutlineUser/> <span>Profile</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/">
-                <AiOutlineMail/>  <span>Notifications</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/">
-                <MdOutlineGroups3/> <span>Communities</span>
-              </Link>
-            </li>
+            {sideBarItems.map((item, index) => (
+              <li  className={ activeSidebar==index ? "active":''} key={index}>
+                <Link onClick={e=>setActiveSidebar(index)} to={`/${item.title.toLocaleLowerCase()}`}>
+                  <AiOutlineSearch /> <span> {item.title} </span>
+                </Link>
+              </li>
+            ))}
             <li>
               <button className="tweet_btn btn btn-block ">Tweet</button>
             </li>
