@@ -12,7 +12,7 @@ const CommunitiesUser = ({ users, keyword, progress }) => {
             <div className="s_img">
               <img src="/images/user.png" alt="" />
               <div className="s_user_details text-left">
-                <h5 style={{width:'inherit'}}> Bored Ape Yacht Club </h5>
+                <h5 style={{width:'inherit'}}> Azuki </h5>
                 <p>432433 User / 432433 Holder</p>
                 <LightProgressBar />
               </div>

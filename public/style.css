@@ -261,7 +261,7 @@ html {
 }
 
 .with_tag .s_user_details h5 {
-    width: min-content;
+    width: min-content !important;
 }
 
 .f_user {
