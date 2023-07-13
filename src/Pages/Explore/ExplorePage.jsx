@@ -4,7 +4,7 @@ import Users from "../Components/Users";
 import Tweets from "../Components/Tweets";
 import Followers from "../Components/Followers";
 import UserFollowerRightSidebar from "../Components/UserFollowerRightSidebar";
-import {HiOutlineSwitchHorizontal} from 'react-icons/hi'
+import { HiOutlineSwitchHorizontal } from "react-icons/hi";
 import TweetRightSidebar from "../Components/TweetRightSidebar";
 
 const ExplorePage = () => {
@@ -148,7 +148,6 @@ const ExplorePage = () => {
     },
   ];
 
-  
   const rightSidebarItemTweets = [
     {
       title: "Tranding Hashtags ",
@@ -165,7 +164,7 @@ const ExplorePage = () => {
         { amount: 32413, title: "#memeToken", value: 50 },
         { amount: 32413, title: "#pepe", value: 30 },
       ],
-    }, 
+    },
   ];
   return (
     <div className="container-fluid">
@@ -182,7 +181,13 @@ const ExplorePage = () => {
                   for <b>Bored Ape Yacht Club</b>
                 </p>
               </div>
-              <button className="btn"> <span><HiOutlineSwitchHorizontal/></span> Switch </button>
+              <button className="btn">
+                {" "}
+                <span>
+                  <HiOutlineSwitchHorizontal />
+                </span>{" "}
+                Switch{" "}
+              </button>
             </div>
             <div className="feed_content hide_sc">
               <div className="active_user f_user ac_box_shadow ">
